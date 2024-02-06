@@ -6,6 +6,7 @@
     <meta name="viewport" content="width='device-width', initial-scale=1.0">
     <title>Document</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="../utils.js"></script>
     <link rel="stylesheet" href="css/style.css">
 </head>
 
@@ -33,8 +34,8 @@ Les valeur retournées doivent être en JSON avec une valeur "message",
 <div id="espace1_2"></div>
 
 <h3>1.3</h3>
-<button id="ajaxButton1_3">Exo1_3 GET</button>
-<button id="ajaxButton1_3">Exo1_3 POST</button><br><br>
+<button id="ajaxButton1_3_GET">Exo1_3 GET</button>
+<button id="ajaxButton1_3_POST">Exo1_3 POST</button><br><br>
 <div id="espace1_3"></div>
 
 <!-- EXO 1_1  -->
@@ -53,7 +54,7 @@ Les valeur retournées doivent être en JSON avec une valeur "message",
                         + "Et valeur deux :<br>" + message.valeur2);
                 },
                 error: function (xhr, status, error) {
-
+                    showError(xhr);
                 }
             });
         });
@@ -70,14 +71,48 @@ Les valeur retournées doivent être en JSON avec une valeur "message",
                 dataType: 'json',
                 success: function (data) {
                     var message = data.message;
-                    $('#espace1_1').html(
-                        "J'ai valeur 1 :<br>" + message.valeur1 +
-                        "<br><br>"
-                        + "Et valeur deux :<br>" + message.valeur2);
+                    $('#espace1_2').html(
+                        "Mon post a envoyé 1 :<br>" + message);
                 },
                 error: function (xhr, status, error) {
-                    console.error('Error:', error);
-                    $('#errorSection').html('Error: ' + error);
+                    showError(xhr);
+                }
+            });
+        });
+    });
+</script>
+
+<!-- EXO 1_3  -->
+<script>
+    $(document).ready(function () {
+        $('#ajaxButton1_3_GET').click(function () {
+            $.ajax({
+                url: 'http://127.0.0.1/Exo1_3_MyIF.php',
+                type: 'GET',
+                dataType: 'json',
+                success: function (data) {
+                    var message = data.message;
+                    $('#espace1_3').html(
+                        "Ma requete etait un " + message);
+                },
+                error: function (xhr, status, error) {
+                    showError(xhr);
+                }
+            });
+        });
+
+        $('#ajaxButton1_3_POST').click(function () {
+            $.ajax({
+                url: 'http://127.0.0.1/Exo1_3_MyIF.php',
+                type: 'POST',
+                dataType: 'json',
+                success: function (data) {
+                    var message = data.message;
+                    $('#espace1_3').html(
+                        "Ma requete etait un " + message);
+                },
+                error: function (xhr, status, error) {
+                    showError(xhr);
                 }
             });
         });
