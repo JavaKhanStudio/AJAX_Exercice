@@ -3,47 +3,20 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width='device-width', initial-scale=1.0">
-    <title>Document</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Development Exercises</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
-    <h1>Call</h1>
-    <button id="ajaxButton">Make AJAX Call</button>
-    <h2>Résultat du call</h2>
-    <div id="fullResponse"></div>
-    <h2>Résultat du call digéré</h2>
-    <div id="ProperResponse"></div>
-
-    <script>
-        $(document).ready(function () {
-            $('#ajaxButton').click(function () {
-                $.ajax({
-                    url: 'http://127.0.0.1/A_simpleCall.php',
-                    type: 'GET', // Je met ici mon verbe
-                    dataType: 'json', // On recoit notre JSON
-                    success: function (data) {
-                        // Juste la répose
-                        $('#fullResponse').html(JSON.stringify(data, null, 2));
-
-                        // Extraction du message 
-                        var message = data.message;
-                        $('#ProperResponse').html('<strong>Message:</strong> ' + message);
-
-                        // Le log pour debug
-                        console.log('Extracted message:', message);
-
-                    },
-                    error: function (xhr, status, error) {
-                        console.error('Error:', error);
-                        $('#response').html('Error: ' + error);
-                    }
-                });
-            });
-        });
-    </script>
-
+    <h1>Exercises<br>
+        Development<br>
+        D'API</h1>
+    <div id="exercise-links">
+        <a href="exemple/exo_exemple.html" class="exercise-link">Exercise Exemple</a>
+        <a href="exercise1.html" class="exercise-link">Exercise 1: Des GET et des POST</a>
+        <a href="exercise2.html" class="exercise-link">Exercise 2: Query Parameters</a>
+    </div>
 </body>
 
 </html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width='device-width', initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<div id="exercise-links">
+    <a href="index.html" class="exercise-link">Retour Vers Index</a>
+</div>
+
+<h1>Exercice 1</h1>
+<p>Cette page tente de faire des appel vers différents fichier PHP :
+<ul>
+    <li>http://127.0.0.1/Exo1_1_MyGET</li>
+    <li>http://127.0.0.1/Exo1_2_MyPOST</li>
+    <li>http://127.0.0.1/Exo1_3_MyIF</li>
+</ul>
+<br>
+<br><br>
+Les valeur retournées doivent être en JSON avec une valeur "message",
+</p>
+<h3>1.1</h3>
+<button id="ajaxButton1_1">Exo1_1 Faire GET</button><br><br>
+<div id="espace1_1"></div>
+
+<h3>1.2</h3>
+<button id="ajaxButton1_2">Exo1_2 Faire POST</button><br><br>
+<div id="espace1_2"></div>
+
+<h3>1.3</h3>
+<button id="ajaxButton1_3">Exo1_3 GET</button>
+<button id="ajaxButton1_3">Exo1_3 POST</button><br><br>
+<div id="espace1_3"></div>
+
+<!-- EXO 1_1  -->
+<script>
+    $(document).ready(function () {
+        $('#ajaxButton1_1').click(function () {
+            $.ajax({
+                url: 'http://127.0.0.1/Exo1_1_MyGET',
+                type: 'GET',
+                dataType: 'json',
+                success: function (data) {
+                    var message = data.message;
+                    $('#espace1_1').html(
+                        "J'ai valeur 1 :<br>" + message.valeur1 +
+                        "<br><br>"
+                        + "Et valeur deux :<br>" + message.valeur2);
+                },
+                error: function (xhr, status, error) {
+
+                }
+            });
+        });
+    });
+</script>
+
+<!-- EXO 1_2  -->
+<script>
+    $(document).ready(function () {
+        $('#ajaxButton1_2').click(function () {
+            $.ajax({
+                url: 'http://127.0.0.1/Exo1_2_MyPOST.php',
+                type: 'POST',
+                dataType: 'json',
+                success: function (data) {
+                    var message = data.message;
+                    $('#espace1_1').html(
+                        "J'ai valeur 1 :<br>" + message.valeur1 +
+                        "<br><br>"
+                        + "Et valeur deux :<br>" + message.valeur2);
+                },
+                error: function (xhr, status, error) {
+                    console.error('Error:', error);
+                    $('#errorSection').html('Error: ' + error);
+                }
+            });
+        });
+    });
+</script>
+
+</body>
+
+</html>

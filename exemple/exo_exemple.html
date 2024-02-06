@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width='device-width', initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="../utils.js"></script>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+    <div id="exercise-links">
+        <a href="../index.html" class="exercise-link">Retour Vers Index</a>
+    </div>
+    <h1>Exercice d'exemple</h1>
+    <p>Cette page tente de faire un appel vers :
+        <br>http://127.0.0.1/ExoDemo_simpleCall
+        <br><br>
+        La valeur retourné doit être un JSON avec une valeur "message"
+    </p>
+    <h3 id="errorTitle" style="display: none; color:red">Il semble y avoir un problème</h3>
+    <div id="errorSpace"></div>
+    <br>
+    <button id="ajaxButton">Boutton pour faire Call AJAX</button>
+    <h3>Résultat du call</h3>
+    <div id="fullResponse">VIDE</div>
+    <h3>Résultat du call digéré</h3>
+    <div id="ProperResponse">VIDE</div>
+
+    <script>
+        $(document).ready(function () {
+            $('#ajaxButton').click(function () {
+                $.ajax({
+                    url: 'http://127.0.0.1/ExoDemo_simpleCall',
+                    type: 'GET', // Je met ici mon verbe
+                    dataType: 'json', // On recoit notre JSON
+                    success: function (data) {
+                        // Juste la répose
+                        $('#fullResponse').html(JSON.stringify(data, null, 2));
+
+                        // Extraction du message 
+                        var message = data.message;
+                        $('#ProperResponse').html('<strong>Message:</strong> ' + message);
+
+                        // Le log pour debug
+                        console.log('Extracted message:', message);
+
+                    },
+                    error: function (xhr, status, error) {
+                        showError(xhr);
+                    }
+                });
+            });
+        });
+    </script>
+
+</body>
+
+</html>
