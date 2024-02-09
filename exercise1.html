@@ -6,13 +6,14 @@
     <meta name="viewport" content="width='device-width', initial-scale=1.0">
     <title>Document</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="../utils.js"></script>
+    <script src="utils.js"></script>
     <link rel="stylesheet" href="css/style.css">
 </head>
 
 <div id="exercise-links">
     <a href="index.html" class="exercise-link">Retour Vers Index</a>
 </div>
+
 
 <h1>Exercice 1</h1>
 <p>Cette page tente de faire des appel vers différents fichier PHP :
@@ -23,8 +24,11 @@
 </ul>
 <br>
 <br><br>
-Les valeur retournées doivent être en JSON avec une valeur "message",
+Les valeur retournées doivent être en JSON avec une valeur "message"
 </p>
+<h3 id="errorTitle" style="display: none; color:red">Il semble y avoir un problème</h3>
+<div id="errorSpace"></div>
+<br>
 <h3>1.1</h3>
 <button id="ajaxButton1_1">Exo1_1 Faire GET</button><br><br>
 <div id="espace1_1"></div>
@@ -72,7 +76,7 @@ Les valeur retournées doivent être en JSON avec une valeur "message",
                 success: function (data) {
                     var message = data.message;
                     $('#espace1_2').html(
-                        "Mon post a envoyé 1 :<br>" + message);
+                        "Ma requete etait un :<br>" + message.lePost);
                 },
                 error: function (xhr, status, error) {
                     showError(xhr);

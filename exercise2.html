@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="utils.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <div id="exercise-links">
+        <a href="../index.html" class="exercise-link">Retour Vers Index</a>
+    </div>
+    <h3 id="errorTitle" style="display: none; color:red">Il semble y avoir un problème</h3>
+    <div id="errorSpace"></div>
+    <br>
+    <h3>2.1</h3>
+    <button id="ajaxButton2_1">Exo2_1 Faire GET avec des params</button><br><br>
+    <div id="espace2_1"></div>
+    <br>
+    <h3>2.2</h3>
+    <button id="ajaxButton2_2">Exo2_2 Faire GET Path Variable</button><br><br>
+    <div id="espace2_2"></div>
+    <h3>2.3</h3>
+    <button id="ajaxButton2_3">Exo2_3 Faire GET avec des params et path</button><br><br>
+    <div id="espace2_3"></div>
+
+    <script>
+        $(document).ready(function () {
+            $('#ajaxButton2_1').click(function () {
+                $.ajax({
+                    url: 'http://127.0.0.1/Exo2_1_GetAvecParam',
+                    type: 'GET',
+                    dataType: 'json',
+                    data: {
+                        param1: 'Ceci est ',
+                        autreParam: 'un message'
+                    },
+                    success: function (response) {
+                        $('#espace2_1').html(
+                            "Message de ma requête :<br>" + response.message);
+                    },
+                    error: function (xhr, status, error) {
+                        showError(xhr);
+                    }
+                });
+            });
+        });
+    </script>
+
+    <script>
+        $(document).ready(function () {
+            $('#ajaxButton2_2').click(function () {
+                $.ajax({
+                    url: 'http://127.0.0.1/Exo2_2_GetAvecPath.php/Avec/du/path',
+                    type: 'GET',
+                    dataType: 'json',
+                    success: function (response) {
+                        $('#espace2_2').html(
+                            "Message de ma requête :<br>" + response.message);
+                    },
+                    error: function (xhr, status, error) {
+                        showError(xhr);
+                    }
+                });
+            });
+        });
+    </script>
+
+    <script>
+        $(document).ready(function () {
+            $('#ajaxButton2_3').click(function () {
+                $.ajax({
+                    url: 'http://127.0.0.1/Exo2_3_PathEtParam.php/path',
+                    type: 'GET',
+                    dataType: 'json',
+                    data: {
+                        param1: 'en harmonie'
+                    },
+                    success: function (response) {
+                        $('#espace2_2').html(
+                            "Message de ma requête :<br>" + response.message);
+                    },
+                    error: function (xhr, status, error) {
+                        showError(xhr);
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>
