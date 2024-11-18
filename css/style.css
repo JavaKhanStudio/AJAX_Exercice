@@ -6,6 +6,14 @@ body {
     padding: 20px;
 }
 
+a {
+    color: #deff4c;
+}
+
+a:visited {
+    color: crimson;
+}
+
 h1 {
     color: #ffffff;
 }
