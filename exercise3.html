@@ -12,7 +12,7 @@
 
 <body>
     <div id="exercise-links">
-        <a href="../index.html" class="exercise-link">Retour Vers Index</a>
+        <a href="index.html" class="exercise-link">Retour Vers Index</a>
     </div>
     <h3 id="errorTitle" style="display: none; color:red">Il semble y avoir un problème</h3>
     <div id="errorSpace"></div>
@@ -46,7 +46,7 @@
                     url: 'http://127.0.0.1/Exo3_1_PostAvecParam',
                     type: 'POST',
                     dataType: 'json',
-                    data: {
+                    data: { // Convert the data to a JSON string
                         param1: 'Ceci est ',
                         autreParam: 'un message'
                     },
