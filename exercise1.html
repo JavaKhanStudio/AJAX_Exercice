@@ -70,7 +70,7 @@ Les valeur retournées doivent être en JSON avec une valeur "message"
     $(document).ready(function () {
         $('#ajaxButton1_2').click(function () {
             $.ajax({
-                url: 'http://127.0.0.1/Exo1_2_MyPOST.php',
+                url: 'http://127.0.0.1/Exo1_2_MyPOST',
                 type: 'POST',
                 dataType: 'json',
                 success: function (data) {
@@ -91,7 +91,7 @@ Les valeur retournées doivent être en JSON avec une valeur "message"
     $(document).ready(function () {
         $('#ajaxButton1_3_GET').click(function () {
             $.ajax({
-                url: 'http://127.0.0.1/Exo1_3_MyIF.php',
+                url: 'http://127.0.0.1/Exo1_3_MyIF',
                 type: 'GET',
                 dataType: 'json',
                 success: function (data) {
@@ -107,7 +107,7 @@ Les valeur retournées doivent être en JSON avec une valeur "message"
 
         $('#ajaxButton1_3_POST').click(function () {
             $.ajax({
-                url: 'http://127.0.0.1/Exo1_3_MyIF.php',
+                url: 'http://127.0.0.1/Exo1_3_MyIF',
                 type: 'POST',
                 dataType: 'json',
                 success: function (data) {
